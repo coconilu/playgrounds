@@ -1,7 +1,8 @@
 const plugins = [[
   '@babel/plugin-transform-runtime',
   {
-    // corejs: 3
+    corejs: false,
+    regenerator: true,
   }
 ]]
 
@@ -10,12 +11,7 @@ const presets = [
     "@babel/preset-env",
     {
       debug: true,
-      targets: {
-        edge: "17",
-        firefox: "60",
-        chrome: "44",
-        safari: "11.1",
-      },
+      // targets: ['Firefox > 20'], // 读取 .browserslistrc
       useBuiltIns: "usage",
       corejs: 3,
     },

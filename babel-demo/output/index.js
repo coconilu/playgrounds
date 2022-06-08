@@ -12,6 +12,10 @@ require("core-js/modules/es.object.to-string.js");
 
 require("core-js/modules/es.promise.js");
 
+require("core-js/modules/es.array.iterator.js");
+
+require("core-js/modules/es.object.from-entries.js");
+
 // import "core-js";
 var arr = new Array(5).fill(1);
 console.log("🚀 ~ file: index.js ~ line 2 ~ arr", arr);
@@ -39,4 +43,7 @@ var as = /*#__PURE__*/function () {
   return function as() {
     return _ref.apply(this, arguments);
   };
-}(); // export default arr
+}();
+
+var obj = Object.fromEntries([["a", "1"], ["b", "2"]]);
+console.log("🚀 ~ file: index.js ~ line 11 ~ obj", obj); // export default arr
