@@ -6,6 +6,7 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
+    "test": "vitest -w",
     "preinstall": "corepack prepare pnpm@6.32.24 --activate"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
     "@vitejs/plugin-vue": "^2.3.3",
     "typescript": "^4.5.4",
     "vite": "^2.9.9",
+    "vitest": "^0.18.0",
     "vue-tsc": "^0.34.7"
   },
   "volta": {
