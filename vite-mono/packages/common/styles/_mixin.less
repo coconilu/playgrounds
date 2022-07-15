@@ -1,0 +1,236 @@
+.one-px-common(@top, @right, @bottom, @left, @color: @neutralLine) {
+  content: '';
+  position: absolute;
+  background-color: @color;
+  display: block;
+  z-index: 1;
+  top: @top;
+  right: @right;
+  bottom: @bottom;
+  left: @left;
+}
+
+.top-one-px(@color: @neutralLine) {
+  &::before {
+    width: 100%;
+    height: 1px;
+    transform-origin: 50% 0;
+    .one-px-common(0, auto, auto, 0, @color);
+    @media (min-resolution: 2dppx) {
+      transform: scaleY(0.5);
+    }
+    @media (min-resolution: 3dppx) {
+      transform: scaleY(0.33);
+    }
+  }
+}
+
+.bottom-one-px(@color: @neutralLine) {
+  position: relative;
+
+  &::before {
+    width: 100%;
+    height: 1px;
+    transform-origin: 50% 100%;
+    .one-px-common(auto, auto, 0, 0, @color);
+
+    @media (min-resolution: 2dppx) {
+      transform: scaleY(0.5);
+    }
+
+    @media (min-resolution: 3dppx) {
+      transform: scaleY(0.33);
+    }
+  }
+}
+
+.right-one-px(@color: @neutralLine) {
+  &::after {
+    width: 1px;
+    height: 100%;
+    transform-origin: 100% 50%;
+    .one-px-common(0, 0, auto, auto, @color);
+    @media (min-resolution: 2dppx) {
+      transform: scaleX(0.5);
+    }
+    @media (min-resolution: 3dppx) {
+      transform: scaleX(0.33);
+    }
+  }
+}
+
+.arrowMixin(@h: 8px, @w: 1px, @color: @neutralSubtitle2) {
+  position: absolute;
+  display: inline-block;
+  width: @h;
+  height: @h;
+  border-right: @w solid @color;
+  border-bottom: @w solid @color;
+}
+
+.lineClamp(@lines: 2, @overflow: hidden) {
+  display: -webkit-box;
+  overflow: @overflow;
+  -webkit-line-clamp: @lines;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+}
+
+.noScrollBar() {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.arrow(@h:8px, @w: 1px, @color: @neutralSubtitle2) {
+  position: absolute;
+  display: inline-block;
+  width: @h;
+  height: @h;
+  border-right: @w solid @color;
+  border-bottom: @w solid @color;
+}
+
+.rightArrow(@width: 8px, @color: @neutralSubtitle2, @borderWidth: 1px) {
+  @arrowLength: sqrt(@width * @width * 2);
+  @overLength: calc(@arrowLength / 3.4142); // 3.4142 = 2 * (1 + sin(PI / 4))
+  position: relative;
+  padding-right: @width + 6px;
+  &::before {
+    .arrow(@arrowLength, @borderWidth, @color);
+    content: '';
+    top: 50%;
+    right: @overLength;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+}
+
+.icon() {
+  width: 20px;
+  margin-right: 8px;
+  fill: @cart;
+}
+
+.blackBold() {
+  font-size: 24px;
+  font-weight: @medium;
+  color: @neutralTitle;
+}
+
+.stickyFooterWrapper() {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  & > *:first-child {
+    flex-grow: 1;
+  }
+}
+
+.fullFixed() {
+  position: fixed;
+  width: 100%;
+  max-width: unit(@maxWidth, px);
+  min-width: unit(@minWidth, px);
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+.absoluteMiddle() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.fullFixedMiddle() {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.ellipsis() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leftSawtoothBox(@boxHeight: 100px) {
+  position: relative;
+  filter: drop-shadow(0 2px 5px @neutralShadow);
+
+  .board {
+    width: 100%;
+    height: @boxHeight;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    border-image-repeat: repeat;
+    border-image-slice: 2 2 2 6 fill;
+    border-style: solid;
+    border-width: 1px 1px 1px 3px;
+  }
+}
+
+.lineClamp(@lines: 2px, @overflow: hidden) {
+  display: -webkit-box;
+  overflow: @overflow;
+  -webkit-line-clamp: @lines;
+  -webkit-box-orient: vertical;
+}
+.downArrow(@width: 8px, @color: @neutralSubtitle2, @borderWidth: 1px) {
+  @arrowLength: sqrt(@width * @width * 2);
+  @overLength: @arrowLength / 3.4142; // 3.4142 = 2 * (1 + sin(PI / 4))
+  position: relative;
+  padding-right: @width + 6px;
+  &::before {
+    .arrow(@arrowLength, @borderWidth, @color);
+    content: '';
+    top: 40%;
+    right: @overLength;
+    transform: translateY(-50%) rotate(45deg);
+  }
+}
+
+.toHalfPxH() {
+  transform: scaleY(0.5);
+  @media (min-resolution: 2dppx) {
+    transform: scaleY(0.25);
+  }
+  @media (min-resolution: 3dppx) {
+    transform: scaleY(0.165);
+  }
+}
+
+._1PxHorizonalLine(@toHalf, @color) {
+  content: '';
+  background-color: @color;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  transform: if(@toHalf, scaleY(0.5), scaleY(0));
+  @media (min-resolution: 2dppx) {
+    transform: if(@toHalf, scaleY(0.25), scaleY(0.5));
+  }
+  @media (min-resolution: 3dppx) {
+    transform: if(@toHalf, scaleY(0.165), scaleY(0.33));
+  }
+}
+
+.bottom1PxLine(@toHalf: false, @color: @neutralLine) {
+  position: relative;
+  &::before {
+    ._1PxHorizonalLine(@toHalf, @color);
+    bottom: 0;
+    left: 0;
+  }
+}

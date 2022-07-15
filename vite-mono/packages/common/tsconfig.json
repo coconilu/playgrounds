@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@assets/*": ["assets/*"],
+      "@comp/*": ["biz-comps/*"],
+      "@const/*": ["constants/*"],
+      "@resource/*": ["resource/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"],
+      "@tracker/*": ["tracker/*"],
+      "@hooks/*": ["hooks/*"],
+      "@/*": ["./*"],
+      "@typings/*": ["../../typings/*"]
+    }
+  }
+}
