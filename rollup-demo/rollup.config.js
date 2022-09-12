@@ -5,7 +5,8 @@ import babel from "@rollup/plugin-babel";
 import fs from "fs";
 
 export default defineConfig({
-  input: "src/index.js",
+  // input: "src/index.js",
+  input: "src/reactEntry.js",
   external: ["lodash"],
   plugins: [
     // nodeResolve(),
