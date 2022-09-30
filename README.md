@@ -1,5 +1,7 @@
 # playgrounds
 
+个人代码片段库。
+
 - [playgrounds](#playgrounds)
   - [Babel](#babel)
     - [1. @babel/preset-env](#1-babelpreset-env)
